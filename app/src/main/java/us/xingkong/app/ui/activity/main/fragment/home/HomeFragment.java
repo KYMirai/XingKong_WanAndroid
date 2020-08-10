@@ -1,24 +1,26 @@
 package us.xingkong.app.ui.activity.main.fragment.home;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.annotation.SuppressLint;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 
-import butterknife.ButterKnife;
+import butterknife.BindView;
 import us.xingkong.app.R;
+import us.xingkong.app.R2;
 import us.xingkong.app.ui.base.fragment.BaseFragment;
 
+@SuppressLint("NonConstantResourceId")
 public class HomeFragment extends BaseFragment<HomePresenter> {
+    @BindView(R2.id.home_test)
+    TextView tv_test;
+
     @Override
-    protected View createView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    protected int getResource() {
+        return R.layout.fragment_home;
     }
 
     @Override
     protected void initView() {
-        ButterKnife.bind(this, requireRoot());
+        tv_test.setText(requirePresenter().test());
     }
 }

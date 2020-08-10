@@ -1,12 +1,7 @@
 package us.xingkong.app.ui.activity.main;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
-
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -35,6 +30,10 @@ public class MainActivity extends BaseActivity {
     @BindView(R2.id.coordinator)
     CoordinatorLayout coordinator;
 
+    private final HomeFragment homeFragment = new HomeFragment();
+    private final MineFragment mineFragment = new MineFragment();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,22 +44,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // 设置状态栏底色白色
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().setStatusBarColor(Color.WHITE);
-            // 设置状态栏字体黑色
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-
+        super.initView();
         //fragment的id数组
         ArrayList<Integer> ids = new ArrayList<>();
         ids.add(R.id.navigation_home);
         ids.add(R.id.navigation_me);
 
         //id数组对应的Fragment
-        pager.setAdapter(new AppPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, new Fragment[]{new HomeFragment(), new MineFragment()}));
+        pager.setAdapter(new AppPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, new Fragment[]{homeFragment, mineFragment}));
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

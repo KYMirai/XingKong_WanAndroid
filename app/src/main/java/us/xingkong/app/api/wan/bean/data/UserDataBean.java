@@ -1,10 +1,10 @@
-package us.xingkong.app.api.wan.bean;
+package us.xingkong.app.api.wan.bean.data;
 
 import java.util.List;
 
 import us.xingkong.app.api.wan.bean.base.BaseDataBean;
 
-public class UserBean extends BaseDataBean {
+public class UserDataBean implements BaseDataBean {
     public boolean admin;
     public List<Object> chapterTops;
     public List<Object> collectIds;

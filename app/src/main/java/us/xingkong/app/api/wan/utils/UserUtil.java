@@ -5,8 +5,11 @@ import android.annotation.SuppressLint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import us.xingkong.app.api.wan.bean.LoginBean;
+import us.xingkong.app.api.wan.bean.data.UserDataBean;
 
 public class UserUtil {
+    private static UserDataBean userData;
+
     public interface LoginCallBack {
         void onLogin(LoginBean loginBean);
     }
@@ -30,10 +33,17 @@ public class UserUtil {
                 .login(userName, password)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(callBack::onLogin);
+                .subscribe(loginBean -> {
+                    userData = loginBean.data;
+                    callBack.onLogin(loginBean);
+                });
     }
 
     public static boolean isLogin() {
         return false;
+    }
+
+    public static UserDataBean getUserData() {
+        return userData;
     }
 }

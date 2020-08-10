@@ -3,29 +3,33 @@ package us.xingkong.app.ui.base.fragment;
 import android.app.Activity;
 import android.content.Context;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.Objects;
 
+@SuppressWarnings("rawtypes")
 public abstract class BasePresenter<F extends BaseFragment, M extends BaseModel> {
     private F fragment;
     private M model;
 
-    @SuppressWarnings("unchecked")
-    public BasePresenter(F fragment) {
+    void setFragment(F fragment) {
         this.fragment = fragment;
+    }
+
+    @SuppressWarnings("unchecked")
+    public BasePresenter() {
         try {
-            this.model = (M) ((Class<M>) ((ParameterizedType) (Objects.requireNonNull(getClass().getGenericSuperclass()))).getActualTypeArguments()[0]).getConstructors()[0].newInstance(this);
-        } catch (IllegalAccessException | java.lang.InstantiationException | InvocationTargetException e) {
+            model = ((Class<M>) ((ParameterizedType) (Objects.requireNonNull(getClass().getGenericSuperclass()))).getActualTypeArguments()[1]).newInstance();
+            model.setPresenter(this);
+        } catch (IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
     }
 
-    protected Activity requireActivity(){
+    protected Activity requireActivity() {
         return fragment.requireActivity();
     }
 
-    protected Context requireContext(){
+    protected Context requireContext() {
         return fragment.requireContext();
     }
 
