@@ -5,4 +5,6 @@
     <string name="login">登录</string>
     <string name="item">item</string>
     <string name="logo">logo</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
 </resources>
