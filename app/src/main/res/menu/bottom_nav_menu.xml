@@ -9,7 +9,11 @@
     <!--        android:icon="@drawable/ic_study"-->
     <!--        android:title="推荐" />-->
     <item
-        android:id="@+id/navigation_me"
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_home"
+        android:title="@string/nav_more" />
+    <item
+        android:id="@+id/navigation_mine"
         android:icon="@drawable/ic_mine"
         android:title="@string/nav_mine" />
 </menu>

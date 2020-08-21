@@ -7,4 +7,18 @@
     <string name="logo">logo</string>
     <string name="account">账号</string>
     <string name="password">密码</string>
+    <string name="no_reg">还没有注册？</string>
+    <string name="reg">立即注册</string>
+    <string name="repassword">确认密码</string>
+    <string name="had_reg">已有账号？</string>
+    <string name="login_now">立即登录</string>
+    <string name="register">注册</string>
+    <string name="img">img</string>
+    <string name="author_shareuser">author/shareUser</string>
+    <string name="xx_hours">xx hours</string>
+    <string name="loading">加载中......</string>
+    <string name="desc" />
+    <string name="tag">Test</string>
+    <string name="title">Title</string>
+    <string name="nav_more">更多</string>
 </resources>

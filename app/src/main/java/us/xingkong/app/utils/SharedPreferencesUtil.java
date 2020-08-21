@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import java.util.HashMap;
 
-import us.xingkong.app.BaseApplication;
+import us.xingkong.app.base.BaseApplication;
 
 public class SharedPreferencesUtil {
     //私有静态类，懒加载，线程安全
